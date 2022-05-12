@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block home %}
+<H1>HOME</H1>
+<div>
+    <button onclick="add()">add post</button>
+</div>
+<br>
+{% for post in object_list %}
+<b>Title</b>: {{ post.title }} <b>Post Date: </b>
+{{ post.post_date | date }}
+    <a href="{% url 'update_class_view' post.pk %}">(edit)</a>
+<div>{{ post.content | safe }}</div>
+<hr>
+{% endfor %}
+
+<script>
+    const add = () => {
+        location.replace('/add')
+    }
+</script>
+
+{% endblock home %}
